@@ -1,0 +1,24 @@
+lsblk
+ls /dev/ttyUSB*
+dmesg | grep FTDI 
+
+repo init -u https://source.codeaurora.org/external/imx/imx-manifest  -b imx-linux-rocko -m imx-4.9.88-2.0.0_ga.xml            // machine not available acc to yocto tutorial not working
+
+repo init -u https://source.codeaurora.org/external/imx/imx-manifest  -b imx-linux-rocko -m imx-4.9.123-2.3.0-8mm_ga.xml       // machine available for imx8mmevk working(TESTED WITH YOCTO)
+
+MACHINE NAME = imx8mmevk
+
+tar -xvf irtim-repo.tar.gz    // to untar the tar file
+unzip                         // to unzip zip file
+
+
+bunzip2 -dk -f <image_name>.sdcard.bz2     // to unzip image 
+
+sudo dd if=<image name>.sdcard  of=/dev/sd<partition> bs=1M conv=fsync   // burn image to sd card
+
+check partition sdc using <lsblk> command
+
+
+
+sudo dd if=irtim-image-base-imx8mmlpddr4evkirtim.sdcard  of=/dev/sdx bs=1M conv=fsync  // burn image to sd card
+
